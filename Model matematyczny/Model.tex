@@ -1,0 +1,185 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+	\geometry{a4paper}
+\usepackage{multicol}
+
+
+\begin{document}
+\section{Model matematyczny}
+Za przykładową  sytuację konfliktową, w rozwiązaniu której komputerowemu mechanizmowi pomaga teoria gier możemy uznać sytuację opisywaną w dylemacie wspólnych zasobów. Inną nazwą tego problemu jest ,,tragedia wspólnego pastwiska''. Obie te nazwy wywodzą się z napisanego przez Garretta Hardina artykułu ,,The Tragedy of the Commons'' \cite{hardin}. Opisany tam dylemat odnosi się do problemu występującego w sytuacji, gdy wielu nastawionych na własny zysk agentów eksploatuje zasób publiczny, do którego wszyscy mają nieograniczony dostęp. 
+W ogólnie dostępnym tłumaczeniu znajduje się słowo ,,pastwisko'', ponieważ Hardin w swoich wywodach odnosi się do przykładu grupy pasterzy wypasających swoje bydło na wspólnej, dostępnej dla każdego łące. Pasterze zostali uznani za jednostki racjonalne, w związku z tym każdy z nich (nawet nieświadomie) zdaje sprawę, że przyprowadzenie większej ilości krów na pastwisko będzie dobrą inwestycją z ich strony (zapewni im wyższą wypłatę/ wyższą zwróconą użyteczność/ niższą utratę użyteczności - w zależności od budowy przeprowadzanej gry). Przyjęte jest również, że zachowanie pasterzy można uznać za algorytm zachłanny, dążą oni do jak największego zysku, nie zwracając uwagi, że eksploatowana przez nich łąka jest zasobem nie tylko wspólnym ale jednocześnie ograniczonym. Po przekroczeniu pewnego nieznanego punktu krytycznego, to jest po przyprowadzeniu na wypas zbyt dużej liczby zwierząt pasterze doprowadzą do sytuacji nazywanej nadmiernym wypasem. Konsekwencją tego będzie coraz bardziej zmniejszająca się ilość roślinności w miejscu wypasowym aż do potencjalnego wyjałowienia tego miejsca.\\
+
+Za przykład takiej sytuacji konfliktowej możemy uznać model przedstawiający sytuację dojazdu do pracy w mieście. Według takiego modelu graczem jest każda osoba starająca się dojechać do swojego miejsca pracy za pomocą samochodu lub środka transportu publicznego (na przykład autobusu). Wspólnie eksploatowanym zasobem jest droga prowadząca do zakładów pracy. Wykorzystywana trasa nie jest w stanie zapewnić sytuacji, według której każdy agent próbowałby dojechać do pracy samochodem i nie stworzyłoby to korku na ulicy. Oprócz tego droga ta jest jedyną rozsądną trasą do docelowych zakładów, przez co próba skorzystania z innej drogi jest niemożliwa do wykonania lub co najmniej wysoce nieopłacalna. Przyjmijmy oprócz tego, że potrzebny do pokonania dystans jest zbyt duży do pokonania na pieszo, a infrastruktura miasta nie wspiera możliwości wykorzystania roweru do przemieszczania się. W założeniach pomińmy sytuacje skrajne, jak na przykład wyjątkowo złą sytuację pogodową, która może wspierać jedną z opcji dojazdu.\\
+Za wypłatę zapewnianą przez każdą z akcji gracza uznajemy abstrakcyjna wartość, którą nazwiemy zadowoleniem. Na zadowolenie może wpływać wiele czynników, między innymi wygoda podróży, czas poświęcony na dojazd, czy cena związana z wykorzystaniem danego środka transportu. W założeniach wpływających na wartość zadowolenia przyjmujemy, że przystanki autobusowe są położone relatywnie blisko każdego z zakładów pracy, przez co nie wpływa to negatywnie na ocenę tego środka transportu. Oprócz tego uogólniamy preferencje populusu. Innymi słowy przyjmujemy, że każdy z graczy czerpie taką samą podstawową przyjemność z jazdy danym pojazdem. Poprzerz podstawową przyjemność rozumiemy przyjemność z korzystania z danego pojazdu w wypadku, gdy nie ma w nim innych pasażerów. Gdzie niezależnie od analizowanego pojazdu (samochodu lub autobusu) obecność innego pasażera jest uznawana za zawadę, negatywnie wpływa na odczuwane zadowolenie gracza. Jedynymi analizowanymi pojazdami są ,,samochód'' i ,,autobus'', wykluczamy istnienie innych rodzajów komunikacji osobistej i publicznej w celu dalszego ujednolicenia odczuwanego zadowolenia.\\
+
+W podstawowej wersji modelu zadowolenie jest bazowane na podstawowej przyjemności, na którą wpływ ma wyłącznie czas podróży. Im dłuższy jest czas trwania dojazdu, tym ogólne zadowolenie graczy jest mniejsze. Innymi słowy im więcej graczy postanowi jechać samochodem osobistym, tym niższe będzie zadowolenie każdego z graczy. Po przekroczeniu pewnej krytycznej liczby samochodów osobistych na drodze zadowolenie otrzymywane z komunikacji samochodem będzie niższe niż zadowolenie uzyskiwane poprzez przejazd autobusem na pustej trasie. 
+
+Wymagane wartości w modelu:
+\begin{itemize}
+	\item
+	$Z$ - finalne zadowolenie gracza (wypłata)
+
+	\item
+	$Z_A$ - podstawowe zadowolenie z poruszania się autobusem
+	
+	\item
+	$Z_S$ - podstawowe zadowolenie z poruszania się samochodem
+	
+	\item
+	$w$ - liczba współpasażerów w pojeździe
+	
+	\item
+	$Z_{w}$ - spadek zadowolenia graczy za każdego  współpasażera w pojeździe
+	
+	\item
+	$V_A$ - przyjęta pojemność autobusu (maksymalna liczba pasażerów)
+	
+	\item
+	$V_S$ - przyjęta pojemność samochodu (maksymalna liczba pasażerów + kierowca)
+	
+	\item
+	$n$ - przyjęta liczba uczestników ruchu drogowego (w celu zachowania użyteczności modelu powinna ona być większa od przepustowości drogi)
+	
+	\item
+	$A$ - ilość autobusów na drodze
+	
+	\item
+	$S$ - ilość samochodów na drodze
+	
+	\item
+	$(A:S)$ - przyjęta wartość jak wielu samochodom na drodze odpowiada jeden autobus
+	
+	\item
+	$P$ - ilość pojazdów na drodze równa sumie $S+ A \cdot (A:S)$
+	
+	\item
+	$D_P$ - przyjęta przepustowość drogi (jak wiele pojazdów może znajdować się na trasie zanim zacznie robić się korek)
+	
+	\item
+	$t_0$ - podstawowy czas przejazdu trasy (czas przejazdu gdy nie ma korków)
+	
+	\item
+	$\Delta{t}$ - wzrost czasu przejazdu za każdy samochód ponad przepustowość drogi
+	
+	\item
+	$t_1$ - czas przejazdu trasy dla przewidywanego korku
+	
+	\item
+	$t_{max}$ - maksymalny czas przejazdu trasy (czas przejazdu w sytuacji, gdyby każdy z graczy postanowił pojechać samochodem)
+	
+	\item
+	$Z_t$ - spadek zadowolenia graczy za każdą jednostkę czasu w różnicy $t_1 - t_0$
+\end{itemize}
+
+Podane powyżej stałe i zmienne mogą zostać dokładniej opisane w poniższy sposób.
+\begin{itemize}
+	\item
+	Jeśli gracz i postanowi pojechać autobusem, jego zadowolenie końcowe spełnia nierówność $Z_i \leq Z_A$ oraz wynosi
+	\begin{equation}
+	Z_{i_A} = Z_A - Z_t \cdot \Delta{t} \cdot \max[0, (P - D_{P})] - w \cdot Z_w.
+	\end{equation}
+
+	\item
+	Jeśli gracz i postanowi pojechać samochodem, jego zadowolenie końcowe spełnia nierówność $Z_i \leq Z_S$ oraz wynosi
+	\begin{equation}
+	Z_{i_S} = Z_S - Z_t \cdot \Delta{t} \cdot \max[0, (P - D_{P})].
+	\end{equation}
+	
+	\item
+	Wartość podstawowego zadowolenia zawsze spełnia nierówność 
+	\begin{equation}\label{porownanie}
+	 Z_{i_A} < Z_{i_S}.
+	 \end{equation}
+	 Innymi słowy każdy z graczy woli jechać samochodem niż autobusem.
+	
+	\item
+	Iloczyn $\Delta{t} \cdot \max[0, (P - D_{P})]$ jest równoważny różnicy $t_1 - t_0$, w związku z czym mogą być wykorzystywane zamiennie.
+	
+	\item
+	W każdej iteracji gry, w której bierze udział wystarczająca ilość graczy, aby umożliwić osiągnięcie wystarczająco wysokiego poziomu pojazdów $P^* > D_P$, istnieje taki krytyczny 
+	czas przejazdu $t^*$, że prawdziwa staje się nierówność
+	\begin{equation}
+	Z_S - Z_t \cdot (t^* - t_0) - V_S \cdot Z_w < Z_A - Z_t \cdot \Delta{t} \cdot (t_0 - t_0) - V_A \cdot Z_w.
+	\end{equation} 
+	Co oznacza, że w większości sytuacji (szczególnie w godzinach szczytu) nieopłacalnym dla graczy jest sytuacja, według której zbyt dużo graczy pojedzie samochodem. Jednocześnie 
+	(jak wynika z powyższych punktów) każdy z graczy woli pojechać samochodem niż autobusem.
+	
+\end{itemize}
+
+Najprostszym sposobem rozszerzenia modelu może być przyjęcie, że dojeżdżający do tego samego zakładu gracze mogą umówić się na wspólne dojeżdżanie do pracy. W celu uproszczenia przyjmujemy też, że zajeżdżanie po współpracowników nie powoduje spadku zadowolenia kierowcy, a zadowolenie wszystkich graczy w samochodzie zmniejsza się za każdą inną osobę w pojeździe. Wzór na zadowolenie gracza poruszającego się samochodem przyjmuje wtedy następującą postać.
+\begin{equation}
+Z_{i_S} = Z_S - Z_t \cdot \Delta{t} \cdot \max[0, (P - D_{P})] - w \cdot Z_w.
+\end{equation}
+Z kolei nierówność (\ref{porownanie}) zostaje rozszerzona do postaci
+\begin{equation}
+Z_S - V_S \cdot Z_w \geq Z_A - w \cdot Z_w.
+\end{equation}
+Co oznacza, że niezależnie od sytuacji na drodze, gracz woli pojechać pełnym samochodem niż autobusem w jakimkolwiek stopniu zapełnienia.\\
+
+Taki model ciągle można rozbudować na wiele różnych sposobów. Między innymi, na zadowolenie uzyskiwane z przejazdu wpływać może ogólny koszt takiego przejazdu. W takim wypadku istotne jest ustalenie pewnego poziomu cen biletów autobusowych, cen paliwa oraz poziomu spalania samochodów osobistych. Taki rozbudowany model zmniejszałby głównie zadowolenie czerpane z przejazdu samochodem osobistym. Ceny biletów byłyby porównywane do iloczynu poziomu spalania samochodu i ceny paliwa za jeden litr.\\
+
+Innym sposobem rozbudowy modelu mogłoby być dodanie współczynnika ekologicznego. Większa ilość pojazdów na drodzę zwiększałaby ogólny poziom spalania paliwa, co bezpośrednio wpływałoby na poziom zanieczyszczenia powietrza w mieście. Z kolei im wyższe zanieczyszczenie tym niższe zadowolenie wszystkich graczy.\\
+
+Żeby model był jeszcze bardziej reprezentatywny względem sytuacji zauważalnej w świecie rzeczywistym, można do niego podłączyć pewien logistyczny model przedstawiający rozbudowę sieci transportu publicznego na podstawie wykazywanej przez graczy chęci na korzystanie z tego transportu. Taki podmodel pomógłby w ukazaniu prawdopodobnych akcji administracji miasta/ zarządu firmy przewoźniczej w zależności od zachowań graczy. Przy zauważalnym spadku sprzedaży biletów flota autobusowa prawdopodobnie traciłaby na swojej liczebności, co mogłoby jeszcze bardziej zaniżać zainteresowanie usługami transportu publicznego. Możliwe są też akcje przeciwne, przy odpowiednio wysokim wzroście zainteresowania usługami transportu autobusami byłaby szansa na to, że zarząd postanowiłbym zwiększyć liczebność posiadanych pojazdów transportu publicznego. Wyżej wspomniany podmodel mógłby zostać dodatkowo rozszerzony poprzez przedstawienie godzin rozpoczęcia i zakończenia pracy graczy jako zmiennej losowej, której rozkład wpływałby bezpośrednio na rozłożenie kursów autobusowych w czasie, a co za tym idzie za optymalny rozmiar ich floty.\\
+
+Ostatni pomysł rozbudowy przedstawianego modelu wpływałby pośrednio na decyzje graczy. Zwiększona ilość kursujących środków transportu publicznego pozytywnie wpływałaby na prawdopodobieństwo niższego zagęszczenia agentów w poszczególnych kursach. Oczywiście należy pamiętać, że w takiej sytuacji zostałoby złamane założenie uogólnienia preferencji populusu. Gracze poruszający się do pracy w różnych godzinach dnia posiadaliby różne preferencje względem środków transportu.\\
+
+Przykład użycia modelu.\\
+Przyjmijmy następujące wartości.
+\begin{itemize}
+	\item
+	$n = 20$ - W grze bierze udział dwudziestu agentów.
+	\item
+	$D_p = 5$ - Jeżeli na drodze znajdzie się więcej niż pięć samochodów, droga staje się zakorkowana.
+	\item
+	$(S:A) = 3$ - Autobsu zajmuje tyle miejsca na drodze co trzy samochody.
+	\item
+	$\Delta{t} = 1$ - Czas potrzebny na pokonanie trasy zwiększa się o jedną jednostkę za każdy samochód ponad przepustowość.
+	\item
+	$Z_t = 1$ -Za każdą ponadmiarową jednostkę czasu wszyscy uczestnicy ruchu drogowego tracą jednostkę zadowolenia.
+	\item
+	$Z_A = 5$ - Podstawowe zadowolenie wynikające z przejazdu autobusem wynosi pięć jednostek.
+	\item
+	$Z_S = 10$ - Podstawoewe zadowolenie wynikające z przejazdu samochodem osobowym wynosi dziesięć jednostek.
+	\item
+	$V_A = 20$ - Autobus jest w stanie przewieźć do dwudziestu pasażerów.
+	\item
+	$Z_w = 0.5$ - Spadek zadowolenia pasażera autobusu za każdego współpasażera.
+\end{itemize}
+
+Przyjmujemy, że autobus jest niezależną jednostką, która kursuje nawet w wypadku, gdy nie ma chętnych na przejazd.\\
+Strategie wiersza reprezentują strategie losowo wybranego gracza- jazdę samochodem i przejazd autobusem. Strategie kolumny przedstawiają zgrupowane strategie pozostałych graczy. Zaczynając od sytuacji, gdzie wszyscy pozostali gracze jadą autobusem, a kontynuując strategiami, według których coraz większa liczba graczy postanawia dojechać do pracy samochodem osobistym. W celu czytelności zostało przyjęte, że wypłaty każdego z niewylosowanych graczy nie mają znaczenia w związku z czym ich strategie zostały zbite w jedną całość, a same wypłaty nie zostały zaprezentowane na macierzy wypłat.\\
+
+W wypadku gdy wiersz wybierze jazdę samochodem, przecięcie ze strategiami kolumny ze zbioru $\{A, A+S\}$ daje zadowolenie końcowe wiersza $Z = Z_S$. Zaczynając od strategii kolumny $A+2S$ zadolenie końcowe będzie spadać o iloczyn $\Delta{t} \cdot Z_t$ w każdej kolejnej strategii kolumny. 
+
+W wypadku gdy wiersz wybierze jazdę autobusem, przecięcie ze strategiami kolumny ze zbioru $\{A, A+S, A+2S\}$ daje zadowolenie końcowe wiersza $Z = Z_A - w \cdot Z_w$. W następnych strategiach zadowolenie końcowe będzie dodatkowo zmniejsza o  iloczyn $\Delta{t} \cdot Z_t$ w każdej kolejnej strategii kolumny.\\
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} \hline
+& A & A+S& A+2S& A+3S& A+4S& A+5S& A+6S& A+7S&A+8S\\ \hline
+S& 10 & 10 & 9 & 8 & 7 & 6 & 5 & 4 & 3  \\ \hline
+A& -4.5 & -4 & -3.5 & -4 & -4.5 & -5 & -5.5 & -6 & -6.5 \\ \hline
+\end{tabular}
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|} \hline
+& A+9S& A+10S&  A+11S& A+12S& A+13S& A+14S& A+15S \\ \hline
+S& 2 & 1 & 0 & -1 & -2 & -3 & -4\\ \hline
+A& -7 & -7.5 & -8 & -8.5 & -9 & -9.5 & -10\\ \hline
+\end{tabular}
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|} \hline
+& A+16S & A+17S& A+18S& A+19S\\ \hline
+S& -5 & -6 & -7 & -8\\ \hline
+A& -10.5 & -11 & -11.5 & -12\\ \hline
+\end{tabular}
+
+Jak łatwo zauważyć z powyższej reprezentacji macierzy wypłat, strategia A jest silnie dominowana przez strategię S. Pokazuje to, że w normalnych warunkach racjonalny gracz nie postanowiłby wybrać się do pracy autobusem. Wniosek ten jest istotą dylematu wspólnych zasobów zwanego ,,tragedy of the commons''. Jednakże jak sam Hardin przyznał, tytuł jego pracy \cite{hardin} może być mylący. Mianowicie jego przemyślenia dotyczą ogólnie dostępnych zasobów, do których dostęp nie jest w żaden sposób uregulowany. W związku z tym, aby zaradzić dylematowi wspólnych zasobów, należy jakoś uregulować możliwość ich eksploatacji. Może to mieć miejsce oddolnie, to znaczy że użytkownicy dóbr mogą wyjść z taką inicjatywą. Pomysł ten jest jednak dość trudny do wprowadzenia w życie w przypadku użytkowników ruchu drogowego. Zostaje więc jeszcze wprowadzenie pewnych ograniczeń odgórnych. Przykłady tego typu regulacji zostaną przedstawione w poniższym wykorzystaniu modelu w programie komputerowym.
+
+\begin{thebibliography}{9}
+\bibitem{hardin}
+Garrett Hardin, ,,The Tragedy of the Commons'', Open Journal of Forestry, 1968
+\end{thebibliography}
+
+\end{document}
